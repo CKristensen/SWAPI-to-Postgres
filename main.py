@@ -5,7 +5,7 @@ import pprint
 from psycopg2 import sql
 import re
 
-PRINT = TRUE
+PRINT = True
 
 def retrieve_source(URL):
     page = requests.get(URL)
@@ -158,21 +158,22 @@ def insert_people_films(people_id, film_id):
     db.close(conn, cursor)
     
 def get_all_relations(type_, id):
-    """Will return a list with all the relations of the SW object.
+    """
+    Will return a list with all the relations of the SW object.
     Args:
         type_ (string): films/people/vehicles/starships/species/planets
         id (int): id of object
 
     Returns:
         [type]: [description]
-    """    
-  j = retrieve_source('https://swapi.dev/api/'+ type_ + f'/{id}/')
-  r_list = []
-  for key in j:
-   if(type(j[key]) is list):
-     for item in j[key]:
-       r_list.append(item.split('/')[-3:-1])
-  return r_list
+    """
+    j = retrieve_source('https://swapi.dev/api/'+ type_ + f'/{id}/')
+    r_list = []
+    for key in j:
+        if(type(j[key]) is list):
+            for item in j[key]:
+                r_list.append(item.split('/')[-3:-1])
+    return r_list
 
 def insert_generic(type, id):
     """Inserts a generit SW object into the database.
@@ -256,8 +257,6 @@ def six_degrees_from_luke():
         -
         - May the force be with you!s
     """
-
-
     # db.delete_swapi_db()
     db.create_swapi_db()
     luke = ['people', 1]
@@ -274,8 +273,9 @@ def six_degrees_from_luke():
     while(pipeline != []):
         item = pipeline.pop(0)
         try:
-            insert_generic(item[0],item[1])if(PRINT):
-            print(f'Inserted: {item[0]}/{item[1]}')
+            insert_generic(item[0],item[1])
+            if(PRINT):
+                print(f'Inserted: {item[0]}/{item[1]}')
         except :
             print(f'failed inserting {item[0]}, {item[1]}!')
         inserted.append(item)

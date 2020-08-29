@@ -162,7 +162,7 @@ def delete_swapi_db():
 					drop table swapi.people_vehicle ;
 					drop table swapi.planet_species;''')
 
-	cur.execute('''	drop table swapi.films;
+		cur.execute('''	drop table swapi.films;
 					drop table swapi.people;
 					drop table swapi.planets;
 					drop table swapi.species;
