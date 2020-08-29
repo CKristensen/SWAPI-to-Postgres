@@ -14,3 +14,5 @@ https://www.postgresqltutorial.com/install-postgresql/
 To connect to your database edit the db_operations.py file line 6 to 9.
 
 May the force be with you!
+
+Carl K
