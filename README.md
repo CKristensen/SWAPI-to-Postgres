@@ -1,4 +1,4 @@
-# Scrapping SWAPI using six degrees of separation algorithm.
+# Scrapping SWAPI using six degrees of separation approach.
 Interacting with the Star Wars API
 
 In this mini-project I wanted to get all information from the Star Wars API using a six degrees of seperation approach.
