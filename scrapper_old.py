@@ -4,6 +4,10 @@ import pprint
 import psycopg2
 from psycopg2 import sql
 
+PASS = os.environ['ACADEMY_DB_PASS']
+USER = os.environ['ACADEMY_USER_NAME']
+DBNAME = os.environ['ACADEMY_USER_NAME']
+HOST = os.environ['ACADEMY_DB']
 
 
 # Write a Python function that retrieves a single resource from the SWAPI given its resource URL, and returns the response object.
@@ -43,10 +47,10 @@ def retrieve_tables_columns():
 
 def connect():
     # Connect to an existing database
-    conn = psycopg2.connect(host = "ds-etl-academy.cgbivchwjzle.eu-west-1.rds.amazonaws.com",
-    dbname ="---",
-    user = "---",
-    password = "---",
+    conn = HOST,
+    dbname =DBNAME,
+    user = USER,
+    password = PASS,
     port = 5432
     )
     cursor = conn.cursor()
@@ -68,15 +72,17 @@ def delete_table(name):
 # The name of the table as well as the columns and data types should be inputs. 
 # Think carefully of what data type you use to link columns to their data types.
 def create_custom_table(name, columns=[]):
+    dic_type = {}
     conn, cursor = connect()
     query = sql.SQL("CREATE TABLE IF NOT EXISTS swapi.{name} (id serial primary key);").format(
             name=sql.Identifier(name))
     cursor.execute(query)
 
     for c in columns:
-        query = sql.SQL("ALTER TABLE swapi.{name} ADD COLUMN {c} TEXT DEFAULT ''").format(
+        query = sql.SQL("ALTER TABLE swapi.{name} ADD COLUMN {c} {type_} DEFAULT ''").format(
             name=sql.Identifier(name),
-            c=sql.Identifier(c))
+            c=sql.Identifier(c)
+            type=sql.Identifier(dic_type[c]))
         cursor.execute(query)
 
     close(conn, cursor)
@@ -128,9 +134,11 @@ def populate_people_table():
         columns = [people[col] for col in attr]
         insert_people(columns)
 
-# populate_people_table()
+populate_people_table()
 URL = 'https://swapi.dev/api/people/'
 all_people = requests.get(URL).json()['results']
 for people in all_people:
     print(people)
     print('##########¤¤¤¤###########')
+
+print(1)
