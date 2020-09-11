@@ -1,4 +1,4 @@
-# Scrapping SWAPI using six degrees of separation algorithm.
+# Scrapping SWAPI using six degrees of separation approach.
 Interacting with the Star Wars API
 
 In this mini-project I wanted to get all information from the Star Wars API using a six degrees of seperation approach.
@@ -14,3 +14,5 @@ https://www.postgresqltutorial.com/install-postgresql/
 To connect to your database edit the db_operations.py file line 6 to 9.
 
 May the force be with you!
+
+Carl K
