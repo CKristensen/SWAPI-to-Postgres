@@ -1,6 +1,8 @@
 # Scrapping SWAPI using six degrees of separation approach.
 Interacting with the Star Wars API
 
+![swlogo](/swlogo.png)
+
 In this mini-project I wanted to get all information from the Star Wars API using a six degrees of seperation approach.
 The program will start with Luke Skywalker and get all his connections to films, starships, planets, etc.
 Then for each connection I will get their connections and so on and so forth.
