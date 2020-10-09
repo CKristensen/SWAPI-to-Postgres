@@ -20,6 +20,7 @@ This way I will end up with all the elements and their details from the Star War
 The result of this project is a PostgreSQL Database with all the films/characters/species/vehicles/starships of the SWAPI and all their connections!
 
 If you do not have a postgres database I would suggest checking this turtorial out so you can install it and create your personal Star Wars Database :D
+
 https://www.postgresqltutorial.com/install-postgresql/
 
 To connect to your database edit the db_operations.py file line 6 to 9.
@@ -27,3 +28,5 @@ To connect to your database edit the db_operations.py file line 6 to 9.
 May the force be with you!
 
 Carl K
+
+Special thank to Snorre for this great idea
