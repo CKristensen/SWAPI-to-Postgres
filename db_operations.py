@@ -3,10 +3,10 @@ from psycopg2 import sql
 import getpass 
 import os
 
-PASS = os.environ['ACADEMY_DB_PASS']
-USER = os.environ['ACADEMY_USER_NAME']
-DBNAME = os.environ['ACADEMY_USER_NAME']
-HOST = os.environ['ACADEMY_DB']
+PASS=os.environ['PASSD']
+USER=os.environ['USERD']
+DBNAME=os.environ['DBNAMED']
+HOST=os.environ['HOSTD']
 
 
 def connect():
@@ -21,7 +21,7 @@ def connect():
         [type]: [description]
 
     """    
-    conn = psycopg2.connect(host = "ds-etl-academy.cgbivchwjzle.eu-west-1.rds.amazonaws.com",
+    conn = psycopg2.connect(host = HOST,
     dbname = DBNAME,
     user = USER,
     password = PASS,
@@ -38,6 +38,7 @@ def close(conn, cursor):
 
 def create_swapi_db():
     conn, cur = connect()
+    cur.execute("CREATE SCHEMA IF NOT EXISTS swapi;")
     
     cur.execute('''CREATE TABLE IF NOT EXISTS swapi.vehicles(
 									vehicle_id int primary key,

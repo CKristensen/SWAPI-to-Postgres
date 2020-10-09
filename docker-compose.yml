@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  postgeslocal:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD="pass"
+    ports:
+      - 5432:5432
+    volumes:
+      - type: volume
+        source: model
+        target: /var/lib/postgresql/data
+  swapi:
+    build: .
+    environment:
+      - PASSD="pass"
+      - USERD=postgres
+      - DBNAMED=postgres
+      - HOSTD=postgeslocal
+volumes:
+  model:

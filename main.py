@@ -1,9 +1,9 @@
 import db_operations as db
 import requests 
 import json
-import pprint
 from psycopg2 import sql
 import re
+import logging
 
 PRINT = True
 
@@ -239,10 +239,10 @@ def insert_relation(rel):
     try:
         cursor.execute(query, (table1[1], table2[1]))
         if(PRINT):
-            print(f'Inserted relations between:{table1} and {table2}')       
+            logging.info(f'Inserted relations between:{table1} and {table2}')       
     except:
         if(PRINT):
-            print(f'Error while inserting relation, {table} {table1[0]} {table2[0]}')
+            logging.info(f'Error while inserting relation, {table} {table1[0]} {table2[0]}')
     db.close(conn, cursor)
 
 def six_degrees_from_luke():
@@ -265,7 +265,7 @@ def six_degrees_from_luke():
     try:
         insert_generic(luke[0], luke[1])
         if(PRINT):
-            print(f'Inserted: {luke[0]}/{luke[1]}')
+            logging.info(f'Inserted: {luke[0]}/{luke[1]}')
     except:
         pass
 
@@ -275,9 +275,9 @@ def six_degrees_from_luke():
         try:
             insert_generic(item[0],item[1])
             if(PRINT):
-                print(f'Inserted: {item[0]}/{item[1]}')
+                logging.info(f'Inserted: {item[0]}/{item[1]}')
         except :
-            print(f'failed inserting {item[0]}, {item[1]}!')
+            logging.info(f'failed inserting {item[0]}, {item[1]}!')
         inserted.append(item)
         new_rel = get_all_relations(item[0], item[1])
         for rel in new_rel:
