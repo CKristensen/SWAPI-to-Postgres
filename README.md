@@ -9,6 +9,14 @@ Then look no further!
 To make it work simply clone the repo and run:
 docker-compose up -d --build
 
+
+To connect to the Database you can use DBeaver (dbeaver.io) and use the following credentials:
+PASSWORD: "pass"
+USER: postgres
+DBNAME: postgres
+HOSTD: localhost:5432
+
+
 It will run 2 containers, one with a postgres Database and another with a python script that will scrappe the SWAPI.
 ------------------
 
