@@ -10,11 +10,7 @@ To make it work simply clone the repo and run:
 docker-compose up -d --build
 
 
-To connect to the Database you can use DBeaver (dbeaver.io) and use the following credentials:
-PASSWORD: "pass"
-USER: postgres
-DBNAME: postgres
-HOSTD: localhost:5432
+
 
 
 It will run 2 containers, one with a postgres Database and another with a python script that will scrappe the SWAPI.
@@ -25,16 +21,19 @@ The program will start with Luke Skywalker and get all his connections to films,
 Then for each connection I will get their connections and so on and so forth.
 This way I will end up with all the elements and their details from the Star Wars API with needing to know them beforehand.
 
-The result of this project is a PostgreSQL Database with all the films/characters/species/vehicles/starships of the SWAPI and all their connections!
-
-If you do not have a postgres database I would suggest checking this turtorial out so you can install it and create your personal Star Wars Database :D
-
-https://www.postgresqltutorial.com/install-postgresql/
-
-To connect to your database edit the db_operations.py file line 6 to 9.
-
 May the force be with you!
 
 Carl K
 
 Special thank to Snorre for this great idea
+
+
+To connect to the Database you can use DBeaver (dbeaver.io) and use the following credentials:
+----------------------------
+PASSWORD: "pass"
+
+USER: postgres
+
+DBNAME: postgres
+
+HOSTD: localhost:5432
